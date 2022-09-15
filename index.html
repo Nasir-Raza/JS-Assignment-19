@@ -1,0 +1,75 @@
+<!-- Coded by 
+	 Name	: Nasir Raza
+	 Roll #	: KH01210813250
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./loaderstyle.css">
+</head>
+
+<body>
+    <div class="main-box">
+        <form action="#" onsubmit="createAndAddObjToArray();return false">
+            <h1>Sign Up Form</h1>
+            <hr />
+            <figure>
+                <img class="profile-picture" id="profileImage" src="./assets/upload-user.jpg" title="Profile Picture">
+                <figcaption>Profile Picture</figcaption>
+            </figure>
+
+            <label for="username">Username
+            <input type="text" id="username" name="username" placeholder="Username..." required>
+        </label>
+
+            <label for="email">Email
+            <input type="email" id="email" name="email" placeholder="Email..." required>
+            </label>
+            <label for="password">Password
+            <input type="password" id="password" name="password" placeholder="Password..." required>
+        </label>
+
+            <label for="conf-password">Confirm Password
+            <input type="password" id="conf-password" name="conf-password" placeholder="Confirm Password..." required>
+        </label>
+        <label for="dob">Date of Birth
+            <input type="date" id="dob" name="dob" placeholder="Date of Birth...">
+        </label>
+            <label>Gender
+                <input type="radio" id="male" name="gender" value="m" checked="checked" />
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="f" />
+                <label for="female">Female</label>
+            </label>
+            <br />
+            <label for="address">Address
+                <input type="text" id="address" name="address" placeholder="Address...">
+            </label>
+            <label for="postcode">Post Code
+                <input type="text" id="postcode" name="postcode" placeholder="Post Code...">
+            </label>
+            <label for="profile-pic">
+            <input type="file" accept="image/*" id="profile-pic" name="profile-pic" style="display: none" onChange="loadFile(event)">
+            <img class="upload-prof-pict" src="./assets/upload.jpg" title="Upload Profile Picture" alt="Upload Profile Picture">
+            </label>
+            <input type="submit" name="signup-button" value="Sign Up">
+            <a href="#" onClick="myFunction('index')">Sign In Applicaton</a>
+        </form>
+    </div>
+    <div  id="main" style="display:none;">
+        <h3 id="loadertext">Loading...</h3>
+        <div id="loader"></div>
+    </div>
+    <div id="myDiv" style="display:none;">
+        <h1 id="welcome" class="animate-bottom">Welcome!</h1>
+        <p id="myDivPara" class="animate-bottom"></p>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+/*Coded by 
+	 Name	: Nasir Raza
+	 Roll #	: KH01210813250
+*/
+
+/* CSS for Login page */
+body {
+    font: 1em sans-serif;
+}
+
+h1 {
+    padding: 20px;
+    margin: 20px;
+}
+
+hr {
+    margin: 20px;
+}
+
+.login-box {
+    position: absolute;
+    top: 10%;
+    left: 28%;
+    width: 45%;
+    height: 70%;
+    border: 1px solid green;
+    box-sizing: border-box;
+    color:white;
+    background-color: #0b244d;
+    border-radius: 10px;
+}
+
+.logintext {
+    width: 88%;
+    height: 40px;
+    margin: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1em;
+
+}
+
+#chkbox {
+    margin: 20px;
+    height: 20px;
+    width: 20px;
+    font-size: 1.5em;
+}
+
+a {
+ margin: 20px;
+    font-size: 1.5em;
+    color: white;
+}
+
+#login{
+    font-size: 1.5em;
+    width: 88%;
+    margin: 32px;
+    height: 50px;
+    padding: 10px;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    .login-box {
+        left: 5%;
+        width: 90%;
+        height: 90%;
+    }
+
+    .logintext {
+        left: 5%;
+        width: 80%;
+        height: 30px;
+        margin: 20px;
+    }
+    
+}
