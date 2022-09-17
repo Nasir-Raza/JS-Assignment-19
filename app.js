@@ -7,16 +7,18 @@ var userObjectArr = [];
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var male = "", female = "";
 var count = 0;
-var isValidRecord; 
+var isValidRecord;
+var IsAuthenticated;
 
 /* creating constructor for user object*/
 
-function UserObject(id, username, email, password, confPassword, dob, gender, address, postcode, profilepicture) {
+function UserObject(id, username, email, password, confPassword,contact, dob, gender, address, postcode, profilepicture) {
     this.id = id;
     this.username = username;
     this.email = email;
     this.password = password;
     this.confPassword = confPassword;
+    this.contact = contact;
     this.dob = dob;
     this.gender = gender;
     this.address = address;
@@ -30,6 +32,7 @@ function createAndAddObjToArray() {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     var confPassword = document.getElementById("conf-password").value;
+    var contact = document.getElementById("contact").value;
     var dob = setDob(document.getElementById("dob").value);
     male = document.getElementById("male");
     female = document.getElementById("female");
@@ -52,12 +55,13 @@ function createAndAddObjToArray() {
     console.log("Is Valid Record", isValidRecord);
 
     if (isValidRecord) {
-        userObjectArr.push(new UserObject(count, username, email, password, confPassword, dob, gender, address, postcode, profilepicture));
+        userObjectArr.push(new UserObject(count, username, email, password, confPassword, contact, dob, gender, address, postcode, profilepicture));
         count++;
         document.getElementById("username").value = "";
         document.getElementById("email").value = "";
         document.getElementById("password").value = "";
         document.getElementById("conf-password").value = "";
+        document.getElementById("contact").value = "";
         document.getElementById("dob").value = "";
         male.checked = true ;
         female.checked = false;
@@ -108,31 +112,35 @@ function getGender(pmale) {
     }
 }
 
-function loadFile(event) {
-    profileImage.setAttribute("src", URL.createObjectURL(event.target.files[0]));
+function loadFile(element) {
+    var file = element.files[0];
+    var reader = new FileReader();
+    reader.onloadend = function() {
+    var imageData = reader.result;
+    var profPict = document.getElementById("profileImage");
+    profPict.src = imageData;
+    }
+    reader.readAsDataURL(file);
 }
 
 /* Show the loader control */
 
 var myVar;
 var page;
-var userObjectKey;
-// var localStorageUserobj;
 
 var localStorageUserobj = window.localStorage.getItem("userObjects");
 localStorageUserobj = JSON.parse(localStorageUserobj);
-// console.log(localStorageUserobj);
 
+function myFunction(p_page) {
 
-function myFunction(p_page, id) {
     page = p_page;
-    userObjectKey = id;
     console.log("Inside myFunction")
     document.getElementById("myDiv").style.display = "none";
     document.getElementById("main").style.display = "block";
     document.getElementById("loader").style.display = "block";
     myVar = setTimeout(showDiv, 2000);
 }
+
 
 function showDiv() {
     if (page === "index") {
@@ -150,11 +158,13 @@ function showDiv() {
 function hideDiv() {
     if (page === "index"){
         document.getElementById("myDiv").style.display = "none";
+
         // Simulate an HTTP redirect:
         window.location.replace("./signin.html");
     }
     else {
         document.getElementById("myDiv").style.display = "none";
+
         // Simulate an HTTP redirect:
         window.location.replace("./dashboard.html");
     }
@@ -163,6 +173,7 @@ function hideDiv() {
 function verifyPassword() {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
+    
     if(email === ""){
         alert("Enter your email.");
     }
@@ -170,29 +181,87 @@ function verifyPassword() {
         alert("Enter your password.");
     }
     else {
-       
-    
         for (var key in localStorageUserobj){
             
-            console.log("Key", key);
-            if (email !== localStorageUserobj[key].email) {
-                alert("Email not found.");
-            }
-            else if (password !== localStorageUserobj[key].password) {
-                alert("Incorrect password. Please enter correct password.");
+            // console.log("Key", key);
+            console.log(email);
+            console.log(password);
+
+            if (email === localStorageUserobj[key].email && password === localStorageUserobj[key].password) {
+                IsAuthenticated = true;
+                break;
             }
             else {
-                // var userObjectKey = localStorageUserobj[key].id;    
-                // console.log("userObjectkey",userObjectKey)
-                myFunction("signin", key);
+                IsAuthenticated = false;
             }
         }
-    
+        
+        if (IsAuthenticated) {
+            window.localStorage.setItem("userId", key); 
+            myFunction("signin");
+         }
+        else {
+            alert("Incorrect Email or Password. Please enter again.");          
+        }
     }
 }
-console.log(localStorageUserobj)
+
 function fillUserInfo() {
- console.log(localStorageUserobj[userObjectKey].profilepicture )
- document.getElementById("profile-pic").src = localStorageUserobj[userObjectKey].profilepicture;
-    alert("hello");
+    var loggedinUserId = window.localStorage.getItem("userId");
+    
+    document.getElementById("username").innerText += " " + localStorageUserobj[loggedinUserId].username;
+    
+    document.getElementById("profile-pic").src = localStorageUserobj[loggedinUserId].profilepicture;
+    
+    var gen = localStorageUserobj[loggedinUserId].gender === "m" ? "Male" : "Female";
+    
+    if (gen === "Female") {
+        document.getElementById("genderimg").src  = "./assets/female.png" ;
+    }
+
+    document.getElementById("gender").innerHTML += " " + gen;
+
+    document.getElementById("dob").innerHTML += " " + localStorageUserobj[loggedinUserId].dob;
+   
+    document.getElementById("address").innerHTML += " " + localStorageUserobj[loggedinUserId].address;
+    
+    document.getElementById("postcode").innerHTML += " " + localStorageUserobj[loggedinUserId].postcode;
+
+    document.getElementById("contact").innerHTML += " " + localStorageUserobj[loggedinUserId].contact;
+ 
+    document.getElementById("email").innerHTML += " " + localStorageUserobj[loggedinUserId].email;
+
+    //Get todo objects from local storage
+    var localStorageTodoobj = window.localStorage.getItem("todoObjects");
+    localStorageTodoobj = JSON.parse(localStorageTodoobj);
+    
+    var todoComplete = 0, todoNotComplete = 0; 
+    var unorderList = document.createElement("ul");
+    for (var key in localStorageTodoobj) {
+        if (localStorageTodoobj[key].userId === loggedinUserId) {
+            
+
+            if (localStorageTodoobj[key].isCompleted === 0) {
+                todoNotComplete++;
+                var unoListItems = document.createElement("li");
+                var unoListItemsText = document.createTextNode(localStorageTodoobj[key].description);
+                unoListItems.appendChild(unoListItemsText);
+                unoListItems.setAttribute("class", "todo-notcomplete")
+                unorderList.appendChild(unoListItems);
+            }
+            else {
+                todoComplete++;
+                var unoListItems = document.createElement("li");
+                var unoListItemsText = document.createTextNode(localStorageTodoobj[key].description);
+                unoListItems.appendChild(unoListItemsText);
+                unoListItems.setAttribute("class", "todo-complete")
+                unorderList.appendChild(unoListItems);
+            }
+            
+        }
+    }
+
+    document.getElementById("todohead").innerHTML += " " + "Completed: " + todoComplete + " " + "Not Completed: " + todoNotComplete;
+
+    document.getElementById("tododetail").appendChild(unorderList);
 }
