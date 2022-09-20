@@ -12,7 +12,7 @@ var IsAuthenticated;
 
 /* creating constructor for user object*/
 
-function UserObject(id, username, email, password, confPassword,contact, dob, gender, address, postcode, profilepicture) {
+function UserObject(id, username, email, password, confPassword,contact, dob, gender, address, postcode, profilepicture, isAuthUser) {
     this.id = id;
     this.username = username;
     this.email = email;
@@ -24,6 +24,7 @@ function UserObject(id, username, email, password, confPassword,contact, dob, ge
     this.address = address;
     this.postcode = postcode;
     this.profilepicture = profilepicture;
+    this.isAuthUser = isAuthUser;
 }
 
 function createAndAddObjToArray() {
@@ -51,11 +52,21 @@ function createAndAddObjToArray() {
     else {
         isValidRecord = true;
     }
-
     console.log("Is Valid Record", isValidRecord);
-
     if (isValidRecord) {
-        userObjectArr.push(new UserObject(count, username, email, password, confPassword, contact, dob, gender, address, postcode, profilepicture));
+        //Getting previously saved user data from local storage
+        
+        let prevUsers = window.localStorage.getItem("userObjects");
+    
+        if (prevUsers){
+            prevUsers = JSON.parse(prevUsers);
+            userObjectArr = [...prevUsers];
+            console.log("Previous Users: ", userObjectArr);
+            count = userObjectArr[userObjectArr.length - 1].id + 1;
+            console.log("count ", count)
+        }
+        console.log("count ", count)
+        userObjectArr.push(new UserObject(count, username, email, password, confPassword, contact, dob, gender, address, postcode, profilepicture, false));
         count++;
         document.getElementById("username").value = "";
         document.getElementById("email").value = "";
@@ -182,33 +193,48 @@ function verifyPassword() {
     }
     else {
         for (var key in localStorageUserobj){
-            
+            console.log("key", key)
+            // localStorageUserobj[key].isAuthUser = false;
             // console.log("Key", key);
             console.log(email);
             console.log(password);
 
             if (email === localStorageUserobj[key].email && password === localStorageUserobj[key].password) {
+                console.log("inside if")
                 IsAuthenticated = true;
-                break;
+                localStorageUserobj[key].isAuthUser = true;
+                console.log(localStorageUserobj[key].isAuthUser)
             }
             else {
-                IsAuthenticated = false;
+                console.log("inside else")
+                // IsAuthenticated = false;
+                localStorageUserobj[key].isAuthUser = false;
+                console.log(localStorageUserobj[key].isAuthUser)
             }
+
+            // IsAuthenticated = true;
         }
         
         if (IsAuthenticated) {
-            window.localStorage.setItem("userId", key); 
+            IsAuthenticated = false;
+            window.localStorage.setItem("userObjects", JSON.stringify(localStorageUserobj)); 
             myFunction("signin");
          }
         else {
+            // window.localStorage.setItem("userObjects", JSON.stringify(localStorageUserobj)); 
             alert("Incorrect Email or Password. Please enter again.");          
         }
     }
 }
 
 function fillUserInfo() {
-    var loggedinUserId = window.localStorage.getItem("userId");
-    
+    let loggedinUserId = "";
+    for (let key in localStorageUserobj) {
+        // console.log(localStorageUserobj[key].isAuthUser)
+        if (localStorageUserobj[key].isAuthUser === true) {
+            loggedinUserId = localStorageUserobj[key].id;
+        }
+    }
     document.getElementById("username").innerText += " " + localStorageUserobj[loggedinUserId].username;
     
     document.getElementById("profile-pic").src = localStorageUserobj[loggedinUserId].profilepicture;
@@ -238,7 +264,9 @@ function fillUserInfo() {
     var todoComplete = 0, todoNotComplete = 0; 
     var unorderList = document.createElement("ul");
     for (var key in localStorageTodoobj) {
-        if (localStorageTodoobj[key].userId === loggedinUserId) {
+        // console.log(typeof(loggedinUserId))
+        // console.log(typeof(localStorageTodoobj[key].userId))
+        if (parseInt(localStorageTodoobj[key].userId) === loggedinUserId) {
             
 
             if (localStorageTodoobj[key].isCompleted === 0) {
@@ -264,4 +292,12 @@ function fillUserInfo() {
     document.getElementById("todohead").innerHTML += " " + "Completed: " + todoComplete + " " + "Not Completed: " + todoNotComplete;
 
     document.getElementById("tododetail").appendChild(unorderList);
+}
+
+function loadTodo() {
+    window.location.replace("./Apps/Todo/todo.html");   
+}
+
+function loadMovie(){
+    window.location.replace("./Apps/BuyMovieTickets/movie.html");   
 }

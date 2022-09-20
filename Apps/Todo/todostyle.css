@@ -1,0 +1,171 @@
+/*Coded by 
+	 Name	: Nasir Raza
+	 Roll #	: KH01210813250
+*/
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color:lightgreen;
+}
+
+a {
+    position: absolute;
+    right: 45px;
+    font-size: x-large;
+    font-weight: 900;
+    color:fuchsia;
+    text-decoration: none;
+}
+.todoinput {
+    margin-left: 17%;
+    border: 2px solid blue;
+    width: 65%;
+    color: black;
+    background-color: yellow;
+}
+
+.todolisthead {
+    margin-top: 20px;
+    margin-left: 17%;
+    width: 65%;
+}
+
+.todolist {
+    margin-top: 5px;
+    margin-left: 17%;
+    border: 2px solid green;
+    width: 65%;
+    height: 460px;
+    overflow-x: auto;
+    background-color: beige
+}
+
+.inputdesc {
+    margin-bottom: 10px;
+    margin-left: 20px;
+    height: 30px;
+    width: 68%;
+    font-size: x-large;
+}
+
+.inputdays {
+    margin-bottom: 10px;
+    margin-left: 20px;
+    height: 30px;
+    width: 25%;
+    font-size: x-large;
+}
+
+.add-button {
+    margin-bottom: 20px;
+    margin-left: 15px;
+    width: 12%;
+    font-size: x-large;
+}
+
+.update-button {
+    margin-bottom: 20px;
+    margin-left: 15px;
+    width: 15%;
+    font-size: x-large;
+}
+
+.itemlistbutton {
+    margin-left: 5px;
+    width: 95px;
+    height: 35px;
+    color: rgb(1, 70, 1);
+    background-color: rgba(129, 158, 35, 0.327);
+    font-size: large;
+}
+
+label {
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: x-large;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    color: blue;
+}
+
+.olist {
+    margin: 30px;
+    font-size: xx-large;
+    list-style-type: decimal-leading-zero;
+    color: rgb(1, 70, 1);
+    font-weight: bold;
+}
+
+.ulist {
+    margin: 20px;
+    font-size: x-large;
+    list-style-type: disc;
+    color: blue;
+    font-weight: normal;
+}
+
+.complete {
+    color:fuchsia;
+    text-decoration: line-through;
+}
+
+/* Add media query to adjust "page content" */
+@media screen and (max-width: 800px) {
+    .todoinput {
+        margin-left: 2%;
+        width: 85%;
+    }
+
+    .todolist {
+        margin-top: 5px;
+        margin-left: 2%;
+        border: 2px solid green;
+        width: 85%;
+    }
+    label {
+        margin-top: 20px;
+        margin-left: 10px;
+        font-size: large;
+    }
+
+    .inputdesc {
+        margin-left: 10px;
+        width: 90%;
+        font-size: large;
+    }
+    
+    .inputdays {
+        
+        margin-left: 10px;
+        width: 22%;
+        font-size: large;
+    }
+    
+    .add-button {
+        margin-bottom: 20px;
+        margin-left: 10px;
+        width: 25%;
+        font-size: large;
+    }
+    
+    .update-button {
+        margin-bottom: 20px;
+        margin-left: 10px;
+        width: 40%;
+        font-size: large;
+    }
+
+    .olist {
+        margin: 10px;
+        font-size: xx-large;
+        font-weight:bold;
+    }
+    
+    .ulist {
+        margin: 2px;
+        font-size: x-large;
+         font-weight: normal;
+    }
+}
