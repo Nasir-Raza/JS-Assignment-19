@@ -1,0 +1,33 @@
+<!-- Coded by 
+	 Name	: Nasir Raza
+	 Roll #	: KH01210813250
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authorize Page</title>
+    <link rel="stylesheet" href="./authorize.css">
+</head>
+
+<body>
+    <div class="message">
+        <h1>Authorization Failed</h1>
+        <strong>You are not authorized to view this page. Please, first signin.</strong><br /><br />Redirecting to
+        signin page...
+    </div>
+    <script>
+        // Redirecting to signin page after 2 seconds
+        
+        let time = setTimeout(showSigninPage, 2000);
+
+        function showSigninPage() {
+            window.location.replace("./signin.html");
+        }
+    </script>
+</body>
+
+</html>

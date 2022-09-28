@@ -2,6 +2,14 @@
 	 Name	: Nasir Raza
 	 Roll #	: KH01210813250
 */
+html { 
+    background: url(./assets/signup-large.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -12,13 +20,32 @@ body {
     font-weight: 300;
 }
 
+.message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    box-sizing: border-box;
+    top: 45%;
+    left: 20%;
+    width: 60%;
+    min-height: 15%;
+    font-size: 1.5em;
+    color: blue;
+    background-color: #efefef;
+    border: 2px solid lightgrey;
+    box-shadow: 5px 5px 5px gray;
+    z-index: 1;
+}
+
 .main-box {
     position: absolute;
-    margin-left: 10%;
-    top: 10px;
+    margin-left: 20%;
+    top: 50px;
     box-sizing: border-box;
     padding: 20px;
-    width: 80%;
+    width: 60%;
     height: auto;
     background: #efefef;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
@@ -153,6 +180,9 @@ input[type="submit"]:focus {
         right: 22px;
         font-size: small;
         font-weight: 500;
+    }
+    .message {
+        font-size: 1em;
     }
 }
 

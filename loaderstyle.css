@@ -1,3 +1,7 @@
+/*Coded by 
+	 Name	: Nasir Raza
+	 Roll #	: KH01210813250
+*/
 /* Center the main */
 #main {
     position: absolute;
@@ -36,12 +40,6 @@
     margin: -10px 0 0 -35px;
     font-weight: 600;
 }
-/*
-#myDiv {
-    display: none;
-    text-align: center;
-}
-*/
 
 #myDiv {
   position: absolute;
@@ -66,22 +64,11 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-/*
-  #welcome{
-      font-size: 4em;
-  }
-*/
 
 #welcome {
   color: #3498db;
   font-size: 3em;
 }
-
-/*
-  p{
-    font-size: 2em;
-}
-*/
 
 /* Add animation to "page content" */
 .animate-bottom {

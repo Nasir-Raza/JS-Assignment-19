@@ -1,3 +1,7 @@
+/*Coded by 
+     Name	: Nasir Raza
+     Roll #	: KH01210813250
+*/
 var movieList = [
     {
         "id": 1,
@@ -118,6 +122,8 @@ var movieList = [
     },
 ];
 
+let loggedinUserId = "";
+
 console.log(movieList)
 
 // Saving movies to local storage
@@ -127,6 +133,27 @@ window.localStorage.setItem("movies", JSON.stringify(movieList));
 let localStroageMovieList = window.localStorage.getItem(("movies"));
 if (localStroageMovieList) {
     localStroageMovieList = JSON.parse(localStroageMovieList);
+}
+
+//Function for getting currently logged in user id
+
+function getLoggedinUserId() {
+    
+    let localStorageUserobj = window.localStorage.getItem("userObjects");
+    if (localStorageUserobj) {
+        localStorageUserobj = JSON.parse(localStorageUserobj);
+        
+        for (let key in localStorageUserobj) {
+            if (localStorageUserobj[key].isAuthUser === true) {
+                loggedinUserId = localStorageUserobj[key].id;
+                console.log("Logged in user id -> ",loggedinUserId);
+                break;
+            }
+        }
+    }
+    if (loggedinUserId === "") {
+        showAuthorizePage();
+    }
 }
 
 for (let key in localStroageMovieList) {
@@ -148,4 +175,10 @@ function bookMovie(element){
 console.log(img)
     
  alert(element)
+}
+
+/* Function for redirecting to authorize page */
+
+function showAuthorizePage() {
+    window.location.replace("../../authorize.html");
 }

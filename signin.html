@@ -14,20 +14,36 @@
     <link rel="stylesheet" href="./loaderstyle.css">
 </head>
 
-<body>
+<body onload="getUsersData()">
+    <div id="message" class="message" style="display: none;"></div>
     <div class="login-box">
-
-        <h1>Login to your account</h1>
-        <hr />
-        <input type="email" id="email" name="email" class="logintext" placeholder="Enter Email" required="" aria-required="true">
-        <input type="password" id="password" name="password" class="logintext" placeholder="Enter Password" required=""
-            aria-required="true">
-        <input type="checkbox" value="" id="chkbox" >
-        <label for="chkbox" id="chkbox">
-            Remember me
-        </label>
-        <a href="#">Forgot Password&#63;</a>
-        <input type="button" id="login" value="Login" onClick="verifyPassword()" >
+        <div class="login-content">
+            <h1>Login to your account</h1>
+        </div>
+        <hr />        
+        <div class="login-content">
+            <input type="email" id="email" name="email" class="logintext" placeholder="Enter Email" required="" aria-required="true">
+            <input type="password" id="password" name="password" class="logintext" placeholder="Enter Password" required="" aria-required="true">
+        </div>
+        <div class="login-content1">
+            <div>
+                <input type="checkbox" id="chkbox" value="" >
+            </div>
+            <div id="rem-me">
+                <label for="chkbox">Remember me</label>
+            
+            </div>
+            <div id="cre-account">
+                <span>Not Registered&#63;</span>
+                <a href="./index.html"> Create account</a>
+            </div>    
+            
+        </div>
+        
+        <div class="login-content">
+            <input type="button" id="login" value="Login" onClick="verifyPassword()" >    
+        </div>
+        
     </div>
     
     <div id="main" style="display:none;">
