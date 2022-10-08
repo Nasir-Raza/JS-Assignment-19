@@ -3,7 +3,7 @@
 	 Roll #	: KH01210813250
 */
 
-.todo{
+.todo {
     box-sizing: border-box;
     background-color: aliceblue;
     border: 1px solid gray;
@@ -12,7 +12,20 @@
     overflow-y: auto;
 }
 
-.todo-complete{
-    color:fuchsia;
+.todo-complete {
+    color: fuchsia;
     text-decoration: line-through;
+}
+
+.li-mov-detail {
+
+    padding-bottom: 3%;
+    color: fuchsia;
+    font-size: 1.2em;
+    font-weight: 600;
+
+}
+
+#moviedetail {
+    padding-right: 2%;
 }

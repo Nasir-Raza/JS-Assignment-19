@@ -3,34 +3,39 @@
      Roll #	: KH01210813250
 */
 
-html { 
-     background: url(./assets/newsbackground.jpg) no-repeat center center fixed; 
+html {
+     background: url(./assets/newsbackground.jpg) no-repeat center center fixed;
      -webkit-background-size: cover;
      -moz-background-size: cover;
      -o-background-size: cover;
      background-size: cover;
- }
- 
+}
+
 body {
-     font-family:Arial, Helvetica, sans-serif;
+     font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
-     color:brown;
+     text-align: center;
+     color: white;
      font-size: 2.5em;
 }
 
-.home {
-     position: relative;
-     left: 82%;
-     font-size: x-large;
-     font-weight:bold;
-     color:brown;
-     background-color: aliceblue;
-     text-decoration: none;
- }
+.dashboard {
+     margin-left: 12.5%;
+     width: 75%;
+     text-align: right;
+}
 
- .message {
+.dashboardlink {
+     font-size: 1.5em;
+     font-weight: 900;
+     color: white;
+     background-color: midnightblue;
+     text-decoration: none;
+}
+
+.message {
      text-align: left;
      position: absolute;
      margin: 18% 36%;
@@ -45,7 +50,7 @@ h1 {
      margin-left: 12.5%;
      width: 75%;
      margin-bottom: 0px;
-     background-color: aliceblue;
+     background-color: midnightblue;
 }
 
 #newsdetail {
@@ -87,7 +92,7 @@ tr {
 }
 
 a {
-     color:springgreen;
+     color: springgreen;
      text-decoration: none;
 }
 
@@ -109,7 +114,7 @@ img {
      /* Stay in place */
      z-index: 1;
      /* Sit on top */
-     padding-top: 70px;
+     padding-top: 150px;
      /* Location of the box */
      left: 0;
      top: 0;
@@ -175,7 +180,7 @@ img {
 
 .close:hover,
 .close:focus {
-     color:aqua;
+     color: aqua;
      text-decoration: none;
      cursor: pointer;
 }
@@ -190,42 +195,57 @@ img {
      font-size: 1.5em;
      padding: 2px 16px;
      width: 92%;
-     height: 430px;
+     height: 380px;
      overflow-y: auto;
 }
 
 .modal-footer {
      padding: 2px 16px;
-     background-color:steelblue;
+     background-color: steelblue;
      color: white;
 }
 
 /* Add media query to adjust "page content" */
 @media screen and (max-width: 800px) {
-     .home {
-          left: 35%;
-          font-size: large;
-      }    
+     .dashboard {
+          margin-left: 2.5%;
+          width: 95%;
+     }
 
-      .modal-body {
-          font-size: 1em;
-      }
-      
-      .key {
+     .dashboardlink {
           font-size: 1em;
      }
-     
+
+     #newshead {
+          margin: 2%;
+          margin-left: 2.5%;
+          width: 95%;
+     }
+
+     #newsdetail {
+          margin: 2.5%;
+          width: 95%;
+
+     }
+
+     .modal-body {
+          font-size: 1em;
+          height: 250px;
+     }
+
+     .key {
+          font-size: 1em;
+     }
+
      .value {
           font-size: 1em;
      }
-     
+
      h1 {
-          color:brown;
           font-size: 1.5em;
      }
 
      .message {
           font-size: 1em;
      }
- }
- 
+}

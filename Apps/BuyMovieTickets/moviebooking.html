@@ -2,87 +2,101 @@
 	 Name	: Nasir Raza
 	 Roll #	: KH01210813250
 -->
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies Home Page</title>
+    <title>Movies Booking Page</title>
     <link rel="stylesheet" href="./moviestyle.css">
 </head>
-
-<body onload="getLoggedinUserId()">
-
-    <div><a href="./movie.html">Goto Home</a></div>
+<body onload="getLoggedinUserId('movieb')">
+    <div id="dashboard"><a id="dashboardlink" href="./movie.html" onClick="unselectMovie()">Home</a></div>
     <h1> Welcome to Cinema Theatre</h1>
+
     <div id="movie">
         <div class="centerboxscr">
-            <div class="cinemascreen" >
-                <img class="moviescreen" src="./assets/action-drive-movie-poster.jpg" alt="movie-poster">
+            <div class="calc">
+                <h3 id="moviename">Movie name: </h3>
+                <h3>Ticket cost: $4.99</h3>
+                <h3 id="tot-seats"># of seats selected: 0</h3>
+                <h3 id="tot-amount">Total amount: $0</h3>
             </div>
-    </div>
+            <div class="moviescreen">
+                <img id="movieimage" src="" alt="movie-poster">
+            </div>
+            <div class="book-buttons">
+                <!-- <h3 id="bookedon">Booked on: </h3>
+                <label for="bookedfor">Booked for 
+                    <br/><input type="date" name="bookedfor" id="bookedfor">
+                </label> -->
+                <button onClick="confirmBooking()">Confirm Booking</button>
+                <button onClick="cancelSelection()">Cancel Selection</button>
+            </div>
         </div>
         <div class="centerboxseats">
-            <div class="seats-row1" ><span>S-1</span></div>
-            <div class="seats-row1" ><span>S-2</span></div>
-            <div class="seats-row1" ><span>S-3</span></div>
-            <div class="seats-row1" ><span>S-4</span></div>
-            <div class="seats-row1" ><span>S-5</span></div>
-            <div class="seats-row1" ><span>S-6</span></div>
-            <div class="seats-row1" ><span>S-7</span></div>
-            <div class="seats-row1" ><span>S-8</span></div>
-            <div class="seats-row1" ><span>S-9</span></div>
-            <div class="seats-row1" ><span>S-10</span></div>
-            <div class="seats-row1" ><span>S-11</span></div>
-            <div class="seats-row1" ><span>S-12</span></div>
-
-            <div class="seats-row2" ><span>S-13</span></div>
-            <div class="seats-row2" ><span>S-14</span></div>
-            <div class="seats-row2" ><span>S-15</span></div>
-            <div class="seats-row2" ><span>S-16</span></div>
-            <div class="seats-row2" ><span>S-17</span></div>
-            <div class="seats-row2" ><span>S-18</span></div>
-            <div class="seats-row2" ><span>S-19</span></div>
-            <div class="seats-row2" ><span>S-20</span></div>
-            <div class="seats-row2" ><span>S-21</span></div>
-            <div class="seats-row2" ><span>S-22</span></div>
-            <div class="seats-row2" ><span>S-23</span></div>
-
-            <div class="seats-row3" ><span>S-24</span></div>
-            <div class="seats-row3" ><span>S-25</span></div>
-            <div class="seats-row3" ><span>S-26</span></div>
-            <div class="seats-row3" ><span>S-27</span></div>
-            <div class="seats-row3" ><span>S-28</span></div>
-            <div class="seats-row3" ><span>S-29</span></div>
-            <div class="seats-row3" ><span>S-30</span></div>
-            <div class="seats-row3" ><span>S-31</span></div>
-            <div class="seats-row3" ><span>S-32</span></div>
-            <div class="seats-row3" ><span>S-33</span></div>
-
-            <div class="seats-row4" ><span>S-34</span></div>
-            <div class="seats-row4" ><span>S-35</span></div>
-            <div class="seats-row4" ><span>S-36</span></div>
-            <div class="seats-row4" ><span>S-37</span></div>
-            <div class="seats-row4" ><span>S-38</span></div>
-            <div class="seats-row4" ><span>S-39</span></div>
-            <div class="seats-row4" ><span>S-40</span></div>
-            <div class="seats-row4" ><span>S-41</span></div>
-            <div class="seats-row4" ><span>S-42</span></div>
-            
-            <div class="seats-row5" ><span>S-43</span></div>
-            <div class="seats-row5" ><span>S-44</span></div>
-            <div class="seats-row5" ><span>S-45</span></div>
-            <div class="seats-row5" ><span>S-46</span></div>
-            <div class="seats-row5" ><span>S-47</span></div>
-            <div class="seats-row5" ><span>S-48</span></div>
-            <div class="seats-row5" ><span>S-49</span></div>
-            <div class="seats-row5" ><span>S-50</span></div>
-            
-    </div>
+            <div class="seatsrowfront">
+                <div id="s-1" class="seats-1" onClick="selectSeats(this.id)"><span>S-1</span></div>
+                <div id="s-2" class="seats-1" onClick="selectSeats(this.id)"><span>S-2</span></div>
+                <div id="s-3" class="seats-1" onClick="selectSeats(this.id)"><span>S-3</span></div>
+                <div id="s-4" class="seats-1" onClick="selectSeats(this.id)"><span>S-4</span></div>
+                <div id="s-5" class="seats-1" onClick="selectSeats(this.id)"><span>S-5</span></div>
+                <div id="s-6" class="seats-1" onClick="selectSeats(this.id)"><span>S-6</span></div>
+                <div id="s-7" class="seats-1" onClick="selectSeats(this.id)"><span>S-7</span></div>
+                <div id="s-8" class="seats-1" onClick="selectSeats(this.id)"><span>S-8</span></div>
+            </div>
+            <div class="seatsrowmiddle1">
+                <div id="s-9" class="seats-2" onClick="selectSeats(this.id)"><span>S-9</span></div>
+                <div id="s-10" class="seats-2" onClick="selectSeats(this.id)"><span>S-10</span></div>
+                <div id="s-11" class="seats-2" onClick="selectSeats(this.id)"><span>S-11</span></div>
+                <div id="s-12" class="seats-2" onClick="selectSeats(this.id)"><span>S-12</span></div>
+                <div id="s-13" class="seats-2" onClick="selectSeats(this.id)"><span>S-13</span></div>
+                <div id="s-14" class="seats-2" onClick="selectSeats(this.id)"><span>S-14</span></div>
+                <div id="s-15" class="seats-2" onClick="selectSeats(this.id)"><span>S-15</span></div>
+                <div id="s-16" class="seats-2" onClick="selectSeats(this.id)"><span>S-16</span></div>
+                <div id="s-17" class="seats-2" onClick="selectSeats(this.id)"><span>S-17</span></div>
+            </div>
+            <div class="seatsrowmiddle2">
+                <div id="s-18" class="seats-3" onClick="selectSeats(this.id)"><span>S-18</span></div>
+                <div id="s-19" class="seats-3" onClick="selectSeats(this.id)"><span>S-19</span></div>
+                <div id="s-20" class="seats-3" onClick="selectSeats(this.id)"><span>S-20</span></div>
+                <div id="s-21" class="seats-3" onClick="selectSeats(this.id)"><span>S-21</span></div>
+                <div id="s-22" class="seats-3" onClick="selectSeats(this.id)"><span>S-22</span></div>
+                <div id="s-23" class="seats-3" onClick="selectSeats(this.id)"><span>S-23</span></div>
+                <div id="s-24" class="seats-3" onClick="selectSeats(this.id)"><span>S-24</span></div>
+                <div id="s-25" class="seats-3" onClick="selectSeats(this.id)"><span>S-25</span></div>
+                <div id="s-26" class="seats-3" onClick="selectSeats(this.id)"><span>S-26</span></div>
+                <div id="s-27" class="seats-3" onClick="selectSeats(this.id)"><span>S-27</span></div>
+            </div>
+            <div class="seatsrowback1">
+                <div id="s-28" class="seats-4" onClick="selectSeats(this.id)"><span>S-28</span></div>
+                <div id="s-29" class="seats-4" onClick="selectSeats(this.id)"><span>S-29</span></div>
+                <div id="s-30" class="seats-4" onClick="selectSeats(this.id)"><span>S-30</span></div>
+                <div id="s-31" class="seats-4" onClick="selectSeats(this.id)"><span>S-31</span></div>
+                <div id="s-32" class="seats-4" onClick="selectSeats(this.id)"><span>S-32</span></div>
+                <div id="s-33" class="seats-4" onClick="selectSeats(this.id)"><span>S-33</span></div>
+                <div id="s-34" class="seats-4" onClick="selectSeats(this.id)"><span>S-34</span></div>
+                <div id="s-35" class="seats-4" onClick="selectSeats(this.id)"><span>S-35</span></div>
+                <div id="s-36" class="seats-4" onClick="selectSeats(this.id)"><span>S-36</span></div>
+                <div id="s-37" class="seats-4" onClick="selectSeats(this.id)"><span>S-37</span></div>
+                <div id="s-38" class="seats-4" onClick="selectSeats(this.id)"><span>S-38</span></div>
+            </div>
+            <div class="seatsrowback2">
+                <div id="s-39" class="seats-5" onClick="selectSeats(this.id)"><span>S-39</span></div>
+                <div id="s-40" class="seats-5" onClick="selectSeats(this.id)"><span>S-40</span></div>
+                <div id="s-41" class="seats-5" onClick="selectSeats(this.id)"><span>S-41</span></div>
+                <div id="s-42" class="seats-5" onClick="selectSeats(this.id)"><span>S-42</span></div>
+                <div id="s-43" class="seats-5" onClick="selectSeats(this.id)"><span>S-43</span></div>
+                <div id="s-44" class="seats-5" onClick="selectSeats(this.id)"><span>S-44</span></div>
+                <div id="s-45" class="seats-5" onClick="selectSeats(this.id)"><span>S-45</span></div>
+                <div id="s-46" class="seats-5" onClick="selectSeats(this.id)"><span>S-46</span></div>
+                <div id="s-47" class="seats-5" onClick="selectSeats(this.id)"><span>S-47</span></div>
+                <div id="s-48" class="seats-5" onClick="selectSeats(this.id)"><span>S-48</span></div>
+                <div id="s-49" class="seats-5" onClick="selectSeats(this.id)"><span>S-49</span></div>
+                <div id="s-50" class="seats-5" onClick="selectSeats(this.id)"><span>S-50</span></div>
+            </div>
+        </div>
     </div>
     <script src="./movieapp.js"></script>
 </body>
-
 </html>

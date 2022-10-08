@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="./moviestyle.css">
 </head>
 
-<body onload="getLoggedinUserId()">
-    <div><a href="../../dashboard.html">Goto Dashboard</a></div>
+<body onload="getLoggedinUserId('movie')">
+    <div id="dashboard"><a id="dashboardlink" href="../../dashboard.html">Dashboard</a></div>
     <h1> Welcome to Movies Home Page</h1>
     <div id="movie">
         <div class="centerbox">
@@ -23,48 +23,48 @@
             </p>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Drive')">
-                        <img class="moviecard" src="./assets/action-drive-movie-poster.jpg" alt="movie-poster">
+                    <a id="0" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie0" src="" alt="movie-poster">
                         <figcaption>Drive</figcaption>
                     </a>
                 </figure>
             </div>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Jurassic Park')">
-                        <img class="moviecard" src="./assets/action-jurassic-park-movie-poster.jpg" alt="movie-poster">
+                    <a id="1" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie1" src="" alt="movie-poster">
                         <figcaption>Jurassic Park</figcaption>
                     </a>
                 </figure>
             </div>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Kick Boxer')">
-                        <img class="moviecard" src="./assets/action-kickboxer-movie-poster.jpg" alt="movie-poster">
+                    <a id="2" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie2" src="" alt="movie-poster">
                         <figcaption>Kick Boxer</figcaption>
                     </a>
                 </figure>
             </div>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Man of Steel')">
-                        <img class="moviecard" src="./assets/action-man-of-steel-movie-poster.jpg" alt="movie-poster">
+                    <a id="3" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie3" src="" alt="movie-poster">
                         <figcaption>Man of Steel</figcaption>
                     </a>
                 </figure>
             </div>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Memory')">
-                        <img class="moviecard" src="./assets/action-memory-movie-poster.jpg" alt="movie-poster">
+                    <a id="4" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie4" src="" alt="movie-poster">
                         <figcaption>Memory</figcaption>
                     </a>
                 </figure>
             </div>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Twister')">
-                        <img class="moviecard" src="./assets/action-twister-movie-poster.jpg" alt="movie-poster">
+                    <a id="5" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie5" src="" alt="movie-poster">
                         <figcaption>Twister</figcaption>
                     </a>
                 </figure>
@@ -74,48 +74,48 @@
             </p>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Carrie')">
-                        <img class="moviecard" src="./assets/horror-carrie-movie-poster.jpg" alt="movie-poster">
+                    <a id="6" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie6" src="" alt="movie-poster">
                         <figcaption>Carrie</figcaption>
                     </a>
                 </figure>
             </div>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Dracula')">
-                        <img class="moviecard" src="./assets/horror-dracula-movie-poster.jpg" alt="movie-poster">
+                    <a id="7" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie7" src="" alt="movie-poster">
                         <figcaption>Dracula</figcaption>
                     </a>
                 </figure>
             </div>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Scream')">
-                        <img class="moviecard" src="./assets/horror-scream-movie-poster.jpg" alt="movie-poster">
+                    <a id="8" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie8" src="" alt="movie-poster">
                         <figcaption>Scream</figcaption>
                     </a>
                 </figure>
             </div>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Seven')">
-                        <img class="moviecard" src="./assets/horror-seven-movie-poster.jpg" alt="movie-poster">
+                    <a id="9" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie9" src="" alt="movie-poster">
                         <figcaption>Seven</figcaption>
                     </a>
                 </figure>
             </div>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Species')">
-                        <img class="moviecard" src="./assets/horror-species-movie-poster.jpg" alt="movie-poster">
+                    <a id="10" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie10" src="" alt="movie-poster">
                         <figcaption>Species</figcaption>
                     </a>
                 </figure>
             </div>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('The Mummy')">
-                        <img class="moviecard" src="./assets/horror-the-mummy-movie-poster.jpg" alt="movie-poster">
+                    <a id="11" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie11" src="" alt="movie-poster">
                         <figcaption>The Mummy</figcaption>
                     </a>
                 </figure>
@@ -126,8 +126,8 @@
             </p>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Ghostbusters')">
-                        <img class="moviecard" src="./assets/recommended-ghostbusters-movie-poster.jpg"
+                    <a id="12" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie12" src=""
                             alt="movie-poster">
                         <figcaption>Ghostbusters</figcaption>
                     </a>
@@ -135,8 +135,8 @@
             </div>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Wild-At-Heart')">
-                        <img class="moviecard" src="./assets/recommended-wild-at-heart-movie-poster.jpg"
+                    <a id="13" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie13" src=""
                             alt="movie-poster">
                         <figcaption>Wild-At-Heart</figcaption>
                     </a>
@@ -144,16 +144,16 @@
             </div>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Twister')">
-                        <img class="moviecard" src="./assets/action-twister-movie-poster.jpg" alt="movie-poster">
+                    <a id="5" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie14" src="" alt="movie-poster">
                         <figcaption>Twister</figcaption>
                     </a>
                 </figure>
             </div>
             <div class="box">
                 <figure class="moviecard">
-                    <a class="moviecard" href="./moviebooking.html" onClick="bookMovie('Scream')">
-                        <img class="moviecard" src="./assets/horror-scream-movie-poster.jpg" alt="movie-poster">
+                    <a id="8" class="moviecard" href="./moviebooking.html" onClick="selectMovie(this.id)">
+                        <img id="movie15" src="" alt="movie-poster">
                         <figcaption>Scream</figcaption>
                     </a>
                 </figure>

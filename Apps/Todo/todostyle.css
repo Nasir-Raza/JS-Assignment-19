@@ -2,8 +2,8 @@
 	 Name	: Nasir Raza
 	 Roll #	: KH01210813250
 */
-html { 
-    background: url(./assets/todoapp.jpg) no-repeat center center fixed; 
+html {
+    background: url(./assets/todoapp.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -11,15 +11,19 @@ html {
 }
 
 body {
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.home {
-    position: relative;
-    left: 82%;
-    font-size: x-large;
-    font-weight:bold;
-    color:whitesmoke;
+.dashboard {
+    margin-left: 20%;
+    width: 60%;
+    text-align: right;
+}
+
+.dashboardlink {
+    font-size: 1.5em;
+    font-weight: 900;
+    color: whitesmoke;
     background-color: navy;
     text-decoration: none;
 }
@@ -47,18 +51,18 @@ body {
 .todoinput {
     display: flex;
     flex-direction: row;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     margin-top: 1%;
     margin-bottom: 1%;
     margin-left: 20%;
     border: 2px solid blue;
     width: 60%;
     color: black;
-    background-color:powderblue;
+    background-color: powderblue;
 }
 
 .mainhead {
-width: 100%;
+    width: 100%;
 }
 
 .todolisthead {
@@ -75,7 +79,7 @@ width: 100%;
     width: 60%;
     max-height: 39vh;
     overflow-x: auto;
-    background-color:powderblue;
+    background-color: powderblue;
 }
 
 .inputdesc {
@@ -128,7 +132,7 @@ h1 {
     margin-bottom: 1%;
     text-align: center;
     color: whitesmoke;
-    background-color:navy;
+    background-color: navy;
 }
 
 .olist {
@@ -148,20 +152,25 @@ h1 {
 }
 
 .complete {
-    color:fuchsia;
+    color: fuchsia;
     text-decoration: line-through;
 }
 
 /* Add media query to adjust "page content" */
 @media screen and (max-width: 800px) {
-    .home {
-        left: 25%;
-        font-size: 1.2em;
-    }    
+
+    .dashboard {
+        margin-left: 2%;
+        width:85%;
+    }
+
+    .dashboardlink {
+        font-size: 1em;
+    }
 
     .message {
         font-size: 1em;
-   }
+    }
 
     .todoinput {
         margin-left: 2%;
@@ -174,6 +183,7 @@ h1 {
         border: 2px solid green;
         width: 85%;
     }
+
     label {
         margin-left: 10px;
         font-size: 1em;
@@ -184,21 +194,21 @@ h1 {
         width: 90%;
         font-size: large;
     }
-    
+
     .inputdays {
-        
+
         margin-left: 10px;
         width: 90%;
         font-size: large;
     }
-    
+
     .add-button {
         margin-bottom: 1.5%;
         margin-left: 10px;
         width: 90%;
         font-size: 1.2em;
     }
-    
+
     .update-button {
         margin-bottom: 1.5%;
         margin-left: 10px;
@@ -209,28 +219,29 @@ h1 {
     .olist {
         margin: 10px;
         font-size: 1.4em;
-        font-weight:bold;
+        font-weight: bold;
     }
-    
+
     .ulist {
         margin-left: 0;
         text-align: left;
-        text-indent:0%;
+        text-indent: 0%;
         font-size: 0.8em;
-         font-weight: normal;
+        font-weight: normal;
     }
+
     .todolisthead {
-        margin-left: 2%; 
+        margin-left: 2%;
         width: 86%;
         word-wrap: break-word;
         font-size: 0.8em;
     }
-    
+
     .itemlistbutton {
         width: 80%;
         font-size: 0.65em;
     }
-    
+
     .mainhead {
         word-wrap: break-word;
         font-size: 1.5em;

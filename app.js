@@ -12,7 +12,6 @@ let isAuthenticated;
 let isAlreadyRegistered;
 let loggedinUserId = "";
 let localStorageUserobj = "";
-// let messageText = "";
 
 // Retrieving users data saved in local storage
 function getUsersData() {
@@ -98,7 +97,7 @@ function createAndAddObjToArray() {
     if (isValidRecord && !isAlreadyRegistered) {
 
         console.log("count ", count)
-        userObjectArr.push(new UserObject(count, username, email, password, confPassword, contact, dob, gender, address, postcode, profilepicture, false));
+        userObjectArr.push(new UserObject(count, username, email, btoa(password), btoa(confPassword), contact, dob, gender, address, postcode, profilepicture, false));
         count++;
         document.getElementById("username").value = "";
         document.getElementById("email").value = "";
@@ -171,9 +170,6 @@ function loadFile(element) {
 var myVar;
 var page;
 
-// var localStorageUserobj = window.localStorage.getItem("userObjects");
-// localStorageUserobj = JSON.parse(localStorageUserobj);
-
 function myFunction(p_page) {
 
     page = p_page;
@@ -233,7 +229,7 @@ function verifyPassword() {
             console.log(email);
             console.log(password);
 
-            if (email === localStorageUserobj[key].email && password === localStorageUserobj[key].password) {
+            if (email === localStorageUserobj[key].email && password === atob(localStorageUserobj[key].password)) {
                 console.log("inside if")
                 isAuthenticated = true;
                 localStorageUserobj[key].isAuthUser = true;
@@ -305,8 +301,9 @@ function fillUserInfo() {
     document.getElementById("contact").innerHTML += " " + localStorageUserobj[loggedinUserId].contact;
 
     document.getElementById("email").innerHTML += " " + localStorageUserobj[loggedinUserId].email;
-    
+
     loadTodoDetails();
+    loadMovieBookingDetails();
 }
 
 //  for loading todo application
@@ -318,16 +315,13 @@ function loadTodo() {
 //Get todo object details for logged in user from local storage
 
 function loadTodoDetails() {
-
-        var localStorageTodoobj = window.localStorage.getItem("todoObjects");
+    var localStorageTodoobj = window.localStorage.getItem("todoObjects");
+    if (localStorageTodoobj) {
         localStorageTodoobj = JSON.parse(localStorageTodoobj);
-    
         var todoComplete = 0, todoNotComplete = 0;
         var unorderList = document.createElement("ul");
         for (var key in localStorageTodoobj) {
             if (parseInt(localStorageTodoobj[key].userId) === loggedinUserId) {
-    
-    
                 if (localStorageTodoobj[key].isCompleted === 0) {
                     todoNotComplete++;
                     var unoListItems = document.createElement("li");
@@ -344,20 +338,75 @@ function loadTodoDetails() {
                     unoListItems.setAttribute("class", "todo-complete")
                     unorderList.appendChild(unoListItems);
                 }
-    
             }
         }
-    
         document.getElementById("todohead").innerHTML += " " + "Completed: " + todoComplete + " " + "Not Completed: " + todoNotComplete;
-    
         document.getElementById("tododetail").appendChild(unorderList);
+    }
 }
 
 //  for loading movie ticket application
-
 function loadMovie() {
     window.location.replace("./Apps/BuyMovieTickets/movie.html");
 }
+
+//Get movie booking details for logged in user from local storage
+function loadMovieBookingDetails() {
+    let userId = "usr-" + loggedinUserId
+    let seatCount = 0;
+    let movieName = "";
+   
+    console.log("User Id -> ", userId);
+    
+    let localStorageMovie = window.localStorage.getItem("movies");
+    if (localStorageMovie) {
+        localStorageMovie = JSON.parse(localStorageMovie);
+        let unorderList = document.createElement("ul");
+        for (let key in localStorageMovie) {
+            for (const values of localStorageMovie[key].seats.values()) {
+                console.log(values.slice(values.indexOf("#") + 1));
+                if (userId === values.slice(values.indexOf("#") + 1)) {
+                    seatCount++;
+                    movieName = localStorageMovie[key].name;
+                }
+            }
+            let text = "";
+            if (seatCount <= 1) {
+                text = " Seat has been booked for movie: ";
+            }
+            else {
+                text = " Seats have been booked for movie: ";
+            }
+           
+            // alert(seatCount + text + movieName);
+           
+            if (seatCount > 0 ) {
+                let unoListItems = document.createElement("li");
+                let unoListItemsText = document.createTextNode(seatCount + text + movieName);
+                unoListItems.appendChild(unoListItemsText);
+                unoListItems.setAttribute("class", "li-mov-detail");
+                unorderList.appendChild(unoListItems);
+                seatCount = 0;
+                movieName = "";
+            }
+            
+            //     }
+            //     else {
+            //         todoComplete++;
+            //         var unoListItems = document.createElement("li");
+            //         var unoListItemsText = document.createTextNode(localStorageTodoobj[key].description);
+            //         unoListItems.appendChild(unoListItemsText);
+            //         unoListItems.setAttribute("class", "todo-complete")
+            //         unorderList.appendChild(unoListItems);
+            //     }
+            // }
+        }
+      
+        // document.getElementById("todohead").innerHTML += " " + "Completed: " + todoComplete + " " + "Not Completed: " + todoNotComplete;
+        document.getElementById("moviedetail").appendChild(unorderList);
+    }
+}
+
 
 //  for loading news application
 
